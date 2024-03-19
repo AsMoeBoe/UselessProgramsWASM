@@ -1,0 +1,274 @@
+/* /Components/Navbar.razor.rz.scp.css */
+.nav-bar[b-7gc1u5c4w8] {
+    position: fixed;
+    display: flex;
+    width: 100dvw;
+    margin: 0px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+}
+
+a[b-7gc1u5c4w8] {
+    color: black;
+    margin: 0px;
+}
+/* /Layout/MainLayout.razor.rz.scp.css */
+body[b-de0e2xcfxi] {
+    margin: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+/* /Pages/Home.razor.rz.scp.css */
+/* GENERAL */
+
+#page[b-mt3drcbbtn] {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    background: linear-gradient( #091541, #030613);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0px;
+    scrollbar-width: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #C0C0C3;
+}
+
+p[b-mt3drcbbtn] {
+    margin: 0px;
+}
+
+/* CONTENT */
+
+#content-container[b-mt3drcbbtn] {
+    position: sticky;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+}
+
+/* GRAPHIC */
+
+#graphic[b-mt3drcbbtn] {
+    height: 120vh;
+    position: fixed;
+    aspect-ratio: 1 / 1;
+    right: -10vh;
+    top: -10vh;
+}
+
+    #graphic p[b-mt3drcbbtn] {
+        position: absolute;
+        right: 53%;
+        bottom: 48%;
+        font-size: 6.8vh;
+        font-weight: 800;
+        color: #EE2F56;
+    }
+
+.clouds[b-mt3drcbbtn] {
+    transition: transform 1s ease-out;
+}
+
+.cloud rect[b-mt3drcbbtn] {
+    height: 4px;
+    rx: 2px;
+    ry: 2px;
+    fill: #C0C0C3;
+    fill-opacity: 75%;
+}
+
+    .cloud rect.connector[b-mt3drcbbtn] {
+        height: 2px;
+        rx: 0px;
+        ry: 0px;
+        stroke: #C0C0C3;
+        stroke-width: 0.1px;
+        stroke-opacity: 75%;
+    }
+
+#clouds-infront .cloud rect[b-mt3drcbbtn] {
+    fill: #091541;
+    fill-opacity: 100%;
+}
+
+    #clouds-infront .cloud rect.connector[b-mt3drcbbtn] {
+        stroke: #091541;
+    }
+
+@keyframes stroke-b-mt3drcbbtn {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: 11;
+    }
+}
+
+#orbit ellipse[b-mt3drcbbtn] {
+    animation: 1.6s linear infinite stroke-b-mt3drcbbtn;
+}
+
+@keyframes pulse-group-b-mt3drcbbtn {
+    from {
+        opacity: 80%;
+    }
+
+    to {
+        opacity: 100%
+    }
+}
+
+@keyframes pulse-b-mt3drcbbtn {
+    from {
+        r: 100;
+    }
+
+    to {
+        r: 105;
+    }
+}
+
+#planet-shadows[b-mt3drcbbtn] {
+    /*animation: 2s ease-in-out infinite alternate pulse-group;*/
+}
+
+.planet-shadow[b-mt3drcbbtn] {
+    /*animation: 2s ease-in-out infinite alternate pulse;*/
+    cx: 100;
+    cy: 100;
+    r: 100;
+    fill: #E0DFE0;
+    transform-origin: 100px 100px;
+}
+
+/* MAIN-PAGE CONTENT */
+
+#page-content[b-mt3drcbbtn] {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    height: calc(100vh - 100px);
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a[b-mt3drcbbtn] {
+    color: #FFFDFD;
+    font-size: 2.3em;
+    font-family: "Microsoft Himalaya", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    margin: 10px 0px;
+    text-decoration-color: #EE2F56;
+}
+/* /Pages/PrimeFactorization.razor.rz.scp.css */
+document[b-rqapvz3gbr] {
+    margin: 0px;
+    position: relative;
+    height: calc(100vh - 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input[b-rqapvz3gbr] {
+    height: 5%;
+    padding: 5px;
+    width: 80%;
+    max-width: 350px;
+    margin-top: 35px;
+    position: sticky;
+}
+
+div[b-rqapvz3gbr] {
+    height: calc(95% - 15px);
+    align-self: stretch;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+svg[b-rqapvz3gbr] {
+    margin: 30px;
+    aspect-ratio: 1 / 1;
+    max-height: 100%;
+    max-width: 100%;
+    transition: position 0.2s ease-in-out;
+}
+
+span[b-rqapvz3gbr] {
+    margin-right: 10px;
+    padding: 0px 10px;
+    border: 1px solid black;
+}
+/* /Pages/TerrainGenerator.razor.rz.scp.css */
+div[b-s6b15f8x9b] {
+    margin: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+rect[b-s6b15f8x9b] {
+    width: 1px;
+    height: 1px;
+    stroke: black;
+    stroke-width: .05px;
+}
+
+svg[b-s6b15f8x9b] {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.input-div[b-s6b15f8x9b] {
+    z-index: 2;
+    height: 80px;
+    top: calc(100% - 80px);
+}
+
+.input-numbers[b-s6b15f8x9b] {
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.generate-button[b-s6b15f8x9b] {
+    height: 20px;
+    width: 100px;
+    position: absolute;
+    top: calc(50% + 10px);
+    left: calc(50% - 50px);
+}
+
+.map-div[b-s6b15f8x9b] {
+    height: calc(100% - 80px);
+    z-index: -1;
+}
