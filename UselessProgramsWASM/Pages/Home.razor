@@ -1,0 +1,202 @@
+﻿@page "/"
+
+<div id="page">
+    <UselessProgramsWASM.Components.Navbar />
+    <div id="content-container">
+        <div id="graphic">
+            <svg viewBox="0 0 200 200">
+                <defs>
+                    <mask id="ellipse-behind-mask">
+                        <rect width="300" height="300" fill="white" />
+                        <circle cx="100" cy="100" r="30" fill="black" />
+                        <rect y="100" width="300" height="100" fill="white" transform-origin="100 100" transform="rotate(90)" />
+                    </mask>
+                    <mask id="anti-rounded-corners-6" maskContentUnits="objectBoundingBox">
+                        <rect x="-0.1" y="-0.1" width="120%" height="120%" fill="white" />
+                        <ellipse cx="0" cy="0.5" rx="0.1667" ry="0.5" fill="black" />
+                        <ellipse cx="1" cy="0.5" rx="0.1667" ry="0.5" fill="black" />
+                    </mask>
+                    <mask id="anti-rounded-corners-12" maskContentUnits="objectBoundingBox">
+                        <rect x="-0.1" y="-0.1" width="120%" height="120%" fill="white" />
+                        <ellipse cx="0" cy="0.5" rx="0.08333" ry="0.5" fill="black" />
+                        <ellipse cx="1" cy="0.5" rx="0.08333" ry="0.5" fill="black" />
+                    </mask>
+                    <mask id="anti-rounded-corners-18" maskContentUnits="objectBoundingBox">
+                        <rect x="-0.1" y="-0.1" width="120%" height="120%" fill="white" />
+                        <ellipse cx="0" cy="0.5" rx="0.041667" ry="0.5" fill="black" />
+                        <ellipse cx="1" cy="0.5" rx="0.041667" ry="0.5" fill="black" />
+                    </mask>
+                </defs>
+
+                <g id="planet-shadows" transform-origin="100 100">
+                    <circle class="planet-shadow" transform-origin="100 100" transform="scale(0.4)" fill-opacity="12%" />
+                    <circle class="planet-shadow" transform="scale(0.5)" fill-opacity="10%" />
+                    <circle class="planet-shadow" transform="scale(0.6)" fill-opacity="8%" />
+                    <circle class="planet-shadow" transform="scale(0.7)" fill-opacity="6%" />
+                    <circle class="planet-shadow" transform="scale(0.8)" fill-opacity="4%" />
+                    <circle class="planet-shadow" transform="scale(0.9)" fill-opacity="2%" />
+                </g>
+
+                <g id="clouds-behind" class="clouds">
+                    <g id="cloud-behind-left" class="cloud">
+                        <rect x="76" y="50" width="8" />
+
+                        <rect x="56" y="56" width="8" />
+
+                        <rect x="66" y="56" width="16" />
+                        <rect class="connector" x="69" y="60" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="84" y="656" width="4" />
+
+                        <rect x="48" y="62" width="4" />
+
+                        <rect x="54" y="62" width="24" />
+                        <rect class="connector" x="60" y="66" width="12" mask="url(#anti-rounded-corners-12)" />
+
+                        <rect x="48" y="68" width="30" />
+                        <rect class="connector" x="54" y="72" width="12" mask="url(#anti-rounded-corners-12)" />
+
+                        <rect x="80" y="68" width="4" />
+
+                        <rect x="38" y="74" width="8" />
+
+                        <rect x="48" y="74" width="24" />
+                        <rect class="connector" x="56" y="78" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="36" y="80" width="30" />
+
+                        <rect x="68" y="80" width="8" />
+
+                        <rect x="24" y="86" width="4" />
+
+                        <rect x="30" y="86" width="20" />
+
+                        <rect x="52" y="86" width="8" />
+                    </g>
+                    <g id="cloud-behind-right" class="cloud">
+                        <rect x="111" y="50" width="16" />
+
+                        <rect x="129" y="50" width="4" />
+
+                        <rect x="103" y="56" width="4" />
+
+                        <rect x="109" y="56" width="24" />
+                        <rect class="connector" x="114" y="60" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="105" y="62" width="20" />
+                        <rect class="connector" x="116" y="66" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="127" y="62" width="8" />
+
+                        <rect x="103" y="68" width="8" />
+
+                        <rect x="113" y="68" width="16" />
+
+                        <rect x="109" y="74" width="12" />
+
+                        <rect x="123" y="74" width="4" />
+                    </g>
+                    <g id="cloud-behind-below" class="cloud">
+                        <rect x="38" y="104" width="14" />
+
+                        <rect x="28" y="110" width="4" />
+
+                        <rect x="34" y="110" width="24" />
+                        <rect class="connector" x="40" y="114" width="12" mask="url(#anti-rounded-corners-12)" />
+
+                        <rect x="60" y="110" width="4" />
+
+                        <rect x="14" y="116" width="4" />
+
+                        <rect x="20" y="116" width="48" />
+                        <rect class="connector" x="36" y="120" width="12" mask="url(#anti-rounded-corners-12)" />
+
+                        <rect x="20" y="122" width="8" />
+
+                        <rect x="30" y="122" width="28" />
+
+                        <rect x="32" y="128" width="16" />
+
+                        <rect x="50" y="128" width="4" />
+                    </g>
+                </g>
+
+                <g id="planet">
+                    <circle id="planet-main-body" cx="100" cy="100" r="30" fill="#FFFDFD" stroke-width="0px" />
+                    <!--<g id="planet-spots">
+                        <circle id="planet-spot-1" cx="80" cy="95" r="6.3" fill="#E0DFE0" fill-opacity="35%"/>
+                        <circle id="planet-spot-2" cx="93" cy="83" r="4.8" fill="#E0DFE0" fill-opacity="35%"/>
+                        <circle id="planet-spot-3" cx="95" cy="97" r="3.8" fill="#E0DFE0" fill-opacity="35%"/>
+                    </g>-->
+                </g>
+
+                <g id="clouds-infront" class="clouds" transform="translate(20, 0)">
+                    <g id="cloud-infront-left" class="cloud">
+                        <rect x="100" y="116" width="12" />
+
+                        <rect x="114" y="116" width="4" />
+
+                        <rect x="90" y="122" width="4" />
+
+                        <rect x="96" y="122" width="14" />
+                        <rect class="connector" x="100" y="126" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="112" y="122" width="8" />
+
+                        <rect x="78" y="128" width="8" />
+
+                        <rect x="88" y="128" width="36" />
+                        <rect class="connector" x="96" y="132" width="18" mask="url(#anti-rounded-corners-18)" />
+
+                        <rect x="126" y="128" width="4" />
+
+                        <rect x="74" y="134" width="4" />
+
+                        <rect x="80" y="134" width="46" />
+                        <rect class="connector" x="90" y="138" width="18" mask="url(#anti-rounded-corners-18)" />
+
+                        <rect x="84" y="140" width="30" />
+
+                        <rect x="116" y="140" width="8" />
+
+                        <rect x="86" y="146" width="4" />
+
+                        <rect x="92" y="146" width="16" />
+                    </g>
+                    <g id="cloud-infront-right" class="cloud">
+                        <rect x="128" y="86" width="16" />
+
+                        <rect x="146" y="86" width="4" />
+
+                        <rect x="124" y="92" width="20" />
+                        <rect class="connector" x="132" y="96" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="146" y="92" width="8" />
+
+                        <rect x="114" y="98" width="8" />
+
+                        <rect x="124" y="98" width="22" />
+                        <rect class="connector" x="130" y="102" width="6" mask="url(#anti-rounded-corners-6)" />
+
+                        <rect x="148" y="98" width="4" />
+
+                        <rect x="112" y="104" width="4" />
+
+                        <rect x="118" y="104" width="24" />
+
+                        <rect x="120" y="110" width="16" />
+
+                        <rect x="138" y="110" width="4" />
+
+                        <rect x="130" y="116" width="8" />
+                    </g>
+                </g>
+
+                <g id="orbit">
+                    <ellipse id="orbit-ellipse" cx="100" cy="100" rx="10" ry="40" transform-origin="100 100" transform="rotate(225)" stroke="#EE2F56" fill="none" mask="url(#ellipse-behind-mask)" stroke-dasharray="7,4" stroke-width="1.5px" />
+                </g>
+            </svg>
+            <p id="graphic-text">SVG TEST</p>
+        </div>
+    </div>
+</div>

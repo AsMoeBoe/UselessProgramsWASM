@@ -1,0 +1,153 @@
+﻿/* GENERAL */
+
+#page {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    background: linear-gradient( #091541, #030613);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0px;
+    scrollbar-width: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #C0C0C3;
+}
+
+p {
+    margin: 0px;
+}
+
+/* CONTENT */
+
+#content-container {
+    position: sticky;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+}
+
+/* GRAPHIC */
+
+#graphic {
+    height: 120vh;
+    position: fixed;
+    aspect-ratio: 1 / 1;
+    right: -10vh;
+    top: -10vh;
+}
+
+    #graphic p {
+        position: absolute;
+        right: 53%;
+        bottom: 48%;
+        font-size: 6.8vh;
+        font-weight: 800;
+        color: #EE2F56;
+    }
+
+.clouds {
+    transition: transform 1s ease-out;
+}
+
+.cloud rect {
+    height: 4px;
+    rx: 2px;
+    ry: 2px;
+    fill: #C0C0C3;
+    fill-opacity: 75%;
+}
+
+    .cloud rect.connector {
+        height: 2px;
+        rx: 0px;
+        ry: 0px;
+        stroke: #C0C0C3;
+        stroke-width: 0.1px;
+        stroke-opacity: 75%;
+    }
+
+#clouds-infront .cloud rect {
+    fill: #091541;
+    fill-opacity: 100%;
+}
+
+    #clouds-infront .cloud rect.connector {
+        stroke: #091541;
+    }
+
+@keyframes stroke {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: 11;
+    }
+}
+
+#orbit ellipse {
+    animation: 1.6s linear infinite stroke;
+}
+
+@keyframes pulse-group {
+    from {
+        opacity: 80%;
+    }
+
+    to {
+        opacity: 100%
+    }
+}
+
+@keyframes pulse {
+    from {
+        r: 100;
+    }
+
+    to {
+        r: 105;
+    }
+}
+
+#planet-shadows {
+    /*animation: 2s ease-in-out infinite alternate pulse-group;*/
+}
+
+.planet-shadow {
+    /*animation: 2s ease-in-out infinite alternate pulse;*/
+    cx: 100;
+    cy: 100;
+    r: 100;
+    fill: #E0DFE0;
+    transform-origin: 100px 100px;
+}
+
+/* MAIN-PAGE CONTENT */
+
+#page-content {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    height: calc(100vh - 100px);
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a {
+    color: #FFFDFD;
+    font-size: 2.3em;
+    font-family: "Microsoft Himalaya", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    margin: 10px 0px;
+    text-decoration-color: #EE2F56;
+}

@@ -1,0 +1,18 @@
+﻿.nav-bar {
+    position: fixed;
+    display: flex;
+    width: 100dvw;
+    margin: 0px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+}
+
+a {
+    color: black;
+    margin: 0px;
+}

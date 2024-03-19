@@ -1,0 +1,114 @@
+﻿@page "/primefactorization"
+
+<document>
+    <PageTitle>PrimeFactorization</PageTitle>
+
+    <UselessProgramsWASM.Components.Navbar />
+
+    <input @bind="inputText" @bind:event="oninput" @bind:after="OnInputChanged" />
+
+    <div>
+        @for (int i = 0; i < inputWords.Length; i++)
+        {
+            string word = inputWords[i];
+
+            <span>
+                @for (int j = 0; j < word.Length; j++)
+                {
+                    if (computedFactorizations.ContainsKey(word[j]))
+                    {
+                        <p>@computedFactorizations[word[j]].ToString()</p>
+                    }
+                }
+            </span>
+        }
+    </div>
+</document>
+
+@code {
+    private class Factorization
+    {
+        public List<int> factors = new List<int>();
+
+        public override string ToString()
+        {
+            string factorizationAsString = factors[0].ToString();
+            int sum = factors[0];
+
+            for (int i = 1; i < factors.Count; i++)
+            {
+                factorizationAsString += " * " + factors[i];
+                sum *= factors[i];
+            }
+
+            factorizationAsString += " = " + sum;
+
+            return factorizationAsString;
+        }
+    }
+
+    string inputText = "Write something";
+    string[] inputWords = { "Write", "something" };
+    string previousInputText = "Write something";
+    List<int> primes = new List<int>();
+    Dictionary<char, Factorization> computedFactorizations = new Dictionary<char, Factorization>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        int max = 128;
+        bool[] inverseSieve = new bool[max];
+        inverseSieve[0] = true;
+        inverseSieve[1] = true;
+
+        for (int i = 2; i < max; i++)
+        {
+            if (!inverseSieve[i])
+            {
+                Console.WriteLine(i);
+
+                primes.Add(i);
+
+                for (int j = i; j < max; j += i)
+                {
+                    inverseSieve[j] = true;
+                }
+            }
+        }
+    }
+
+    private async Task<Factorization> FindPrimeFactorization(Factorization p, int a)
+    {
+        Console.WriteLine("finding prime factorization for " + a);
+
+        for (int i = 0; i < primes.Count; i++)
+        {
+            if (a % primes[i] == 0)
+            {
+                p.factors.Add(primes[i]);
+                return await FindPrimeFactorization(p, a / primes[i]);
+            }
+        }
+
+        Console.WriteLine("found prime factorization for " + a + ": " + p);
+
+        return p;
+    }
+
+    private async void OnInputChanged()
+    {
+        inputWords = inputText.Split(' ').Where((s => s.Length > 0)).ToArray();
+
+        foreach (string word in inputWords)
+        {
+            foreach (char c in word)
+            {
+                Console.WriteLine(c);
+
+                if (!computedFactorizations.ContainsKey(c))
+                {
+                    computedFactorizations[c] = await FindPrimeFactorization(new Factorization(), (int)c);
+                }
+            }
+        }
+    }
+}

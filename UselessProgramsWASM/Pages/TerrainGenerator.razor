@@ -1,0 +1,124 @@
+﻿@page "/terraingenerator"
+
+<PageTitle>TerrainGenerator</PageTitle>
+
+<UselessProgramsWASM.Components.Navbar />
+
+<div>
+    <div class="input-div">
+        <div class="input-numbers">
+            <InputNumber TValue="int" @bind-Value=@seed />
+            <InputNumber TValue="double" @bind-Value=@scale />
+            <InputNumber TValue="int" @bind-Value=@sizeX />
+            <InputNumber TValue="int" @bind-Value=@sizeY />
+        </div>
+
+        <button class="generate-button" @onclick=@GenerateMap>generate</button>
+    </div>
+
+    <div class="map-div">
+        @if (tileMap != null)
+        {
+            <svg viewBox="0 0 @tileMap.GetLength(0) @tileMap.GetLength(1)" preserveAspectRatio="xMidYMid meet">
+                @for (int i = 0; i < tileMap.GetLength(0); i++)
+                {
+                    for (int j = 0; j < tileMap.GetLength(1); j++)
+                    {
+                        <rect width="1" height="1" x=@i y=@j fill=@tileMap[i, j].color />
+                    }
+                }
+            </svg>
+        }
+    </div>
+</div>
+
+@code {
+    class Terrain
+    {
+        int id;
+        double precipitation;
+        string terrainType;
+        public string color;
+
+        public Terrain(double precipitation, string terrainType)
+        {
+            switch (terrainType)
+            {
+                case "deep_water":
+                    color = "#091B5B";
+                    break;
+
+                case "shallow_water":
+                    color = "#1C4E90";
+                    break;
+
+                case "beach":
+                    color = "#E0D0A7";
+                    break;
+
+                case "land":
+                    color = "#257529";
+                    break;
+
+                case "mountain":
+                    color = "#1F1F1F";
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    int seed = 1;
+    double scale = 1;
+    int sizeX = 100;
+    int sizeY = 100;
+    Terrain[,]? tileMap;
+
+    async void GenerateMap()
+    {
+        Console.WriteLine("Generating map");
+
+        Perlin terrainTypePerlin = new Perlin(seed);
+        Perlin precipitationPerlin = new Perlin(seed + 1);
+
+        tileMap = new Terrain[sizeX, sizeY];
+
+        for (int i = 0; i < tileMap.GetLength(0); i++)
+        {
+            Console.WriteLine("Generated: " + (int)((double)i / tileMap.GetLength(0) * 100) + "%");
+
+            for (int j = 0; j < tileMap.GetLength(1); j++)
+            {
+                double terrainTypeNoise = terrainTypePerlin.Noise(i * scale / 10, j * scale / 10);
+                double precipitationNoise = precipitationPerlin.Noise(i * scale / sizeX * 10, j * scale / sizeY * 10);
+
+                string terrainType;
+
+                if (terrainTypeNoise < -0.25)
+                {
+                    terrainType = "deep_water";
+                }
+                else if (terrainTypeNoise < 0)
+                {
+                    terrainType = "shallow_water";
+                }
+                else if (terrainTypeNoise < 0.15)
+                {
+                    terrainType = "beach";
+                }
+                else if (terrainTypeNoise < 0.6)
+                {
+                    terrainType = "land";
+                }
+                else
+                {
+                    terrainType = "mountain";
+                }
+
+                tileMap[i, j] = new Terrain(precipitationNoise / 2 + 0.5, terrainType);
+            }
+        }
+    }
+}
